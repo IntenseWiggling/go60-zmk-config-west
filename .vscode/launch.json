@@ -3,16 +3,16 @@
         "configurations": [
             {
             "type": "probe-rs-debug",
-            "request": "launch",
-            "name": "probe_rs rtt-target example",
+            "request": "attach",
+            "name": "probe_rs rtt-target",
             "cwd": "${workspaceFolder}",
             "chip": "nRF52840_xxAA",
-            "flashingConfig": {
-                "flashingEnabled": true,
-                "verifyBeforeFlashing": true,
-                "verifyAfterFlashing": true,
-                "haltAfterReset": true
-            },
+            // "flashingConfig": {
+            //     "flashingEnabled": true,
+            //     "verifyBeforeFlashing": true,
+            //     "verifyAfterFlashing": true,
+            //     "haltAfterReset": true
+            // },
             "coreConfigs": [
                 {
                     "coreIndex": 0,
@@ -20,17 +20,18 @@
                     "rttEnabled": true,
                     "rttChannelFormats": [
                         {
-                        "channelNumber": 0,
-                        // Format RTT data as String data
-                        "dataFormat": "String",
-                        // Include host-side timestamps for every line of data transferred from the target RTT output
-                        "showTimestamps": true
+                            "channelNumber": 0,
+                            // Format RTT data as String data
+                            "dataFormat": "String",
+                            // Include host-side timestamps for every line of data transferred from the target RTT output
+                            "showTimestamps": false
                         },
                         {
-                        "channelNumber": 1,
-                        // Treat data as raw binary data, and do not format in any way
-                        "dataFormat": "BinaryLE"
+                            "channelNumber": 1,
+                            // Treat data as raw binary data, and do not format in any way
+                            "dataFormat": "BinaryLE"
                         }
+                    ]
                 }
             ]
         }
